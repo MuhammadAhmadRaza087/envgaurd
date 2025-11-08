@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Run EnvInspect to check for secrets before committing (exclude test files, package-lock, and docs)
+npx envinspect --ci --path . --exclude 'package-lock.json' --exclude 'CHANGELOG.md' --exclude 'docs/**' --exclude 'examples/**' --exclude 'test/**' --exclude 'README.md'
+
+# Run lint-staged  
+npx lint-staged
+

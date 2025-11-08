@@ -1,0 +1,353 @@
+{
+  "metadata": {
+    "generatedAt": "2025-11-08T04:27:37.044Z",
+    "tool": "EnvGaurd",
+    "version": "0.1.0"
+  },
+  "summary": {
+    "filesScanned": 1,
+    "envKeysFound": 13,
+    "secretsFound": 13,
+    "envFilesFound": 2,
+    "committedEnvFiles": 0,
+    "severity": {
+      "high": 6,
+      "medium": 5,
+      "low": 2
+    },
+    "overallRisk": "critical"
+  },
+  "envKeys": [
+    {
+      "name": "STRIPE_SECRET_KEY",
+      "usageCount": 1,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 2,
+          "snippet": "const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);"
+        }
+      ]
+    },
+    {
+      "name": "AWS_ACCESS_KEY_ID",
+      "usageCount": 1,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 7,
+          "snippet": "accessKeyId: process.env.AWS_ACCESS_KEY_ID,"
+        }
+      ]
+    },
+    {
+      "name": "AWS_SECRET_ACCESS_KEY",
+      "usageCount": 1,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 8,
+          "snippet": "secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,"
+        }
+      ]
+    },
+    {
+      "name": "AWS_REGION",
+      "usageCount": 2,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 9,
+          "snippet": "region: process.env.AWS_REGION ?? 'us-east-1'"
+        },
+        {
+          "file": "sample-app.js",
+          "line": 9,
+          "snippet": "region: process.env.AWS_REGION ?? 'us-east-1'"
+        }
+      ]
+    },
+    {
+      "name": "PORT",
+      "usageCount": 2,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 13,
+          "snippet": "const port = process.env.PORT ?? 3000;"
+        },
+        {
+          "file": "sample-app.js",
+          "line": 13,
+          "snippet": "const port = process.env.PORT ?? 3000;"
+        }
+      ]
+    },
+    {
+      "name": "DATABASE_URL",
+      "usageCount": 1,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 17,
+          "snippet": "url: process.env.DATABASE_URL,"
+        }
+      ]
+    },
+    {
+      "name": "DATABASE_POOL_SIZE",
+      "usageCount": 1,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 18,
+          "snippet": "poolSize: parseInt(process.env.DATABASE_POOL_SIZE || '10'),"
+        }
+      ]
+    },
+    {
+      "name": "DATABASE_SSL",
+      "usageCount": 1,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 19,
+          "snippet": "ssl: process.env.DATABASE_SSL === 'true'"
+        }
+      ]
+    },
+    {
+      "name": "API_KEY",
+      "usageCount": 1,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 24,
+          "snippet": "key: process.env.API_KEY,"
+        }
+      ]
+    },
+    {
+      "name": "SENDGRID_API_KEY",
+      "usageCount": 1,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 25,
+          "snippet": "sendgridKey: process.env.SENDGRID_API_KEY,"
+        }
+      ]
+    },
+    {
+      "name": "GITHUB_TOKEN",
+      "usageCount": 1,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 26,
+          "snippet": "githubToken: process.env.GITHUB_TOKEN"
+        }
+      ]
+    },
+    {
+      "name": "NODE_ENV",
+      "usageCount": 2,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 30,
+          "snippet": "res.json({ status: 'ok', env: process.env.NODE_ENV });"
+        },
+        {
+          "file": "sample-app.js",
+          "line": 47,
+          "snippet": "console.log(`Environment: ${process.env.NODE_ENV}`);"
+        }
+      ]
+    },
+    {
+      "name": "LOG_LEVEL",
+      "usageCount": 1,
+      "locations": [
+        {
+          "file": "sample-app.js",
+          "line": 48,
+          "snippet": "console.log(`Log level: ${process.env.LOG_LEVEL}`);"
+        }
+      ]
+    }
+  ],
+  "secrets": [
+    {
+      "type": "AWS Access Key ID",
+      "file": ".env",
+      "line": 11,
+      "snippet": "AKIA**************LE",
+      "confidence": "high",
+      "remediation": "Rotate AWS credentials immediately via AWS IAM console. Use AWS Secrets Manager or environment variables."
+    },
+    {
+      "type": "AWS Secret Access Key",
+      "file": ".env",
+      "line": 12,
+      "snippet": "AWS_********************************************************EY",
+      "confidence": "high",
+      "remediation": "Rotate AWS credentials immediately via AWS IAM console."
+    },
+    {
+      "type": "Stripe API Key",
+      "file": ".env",
+      "line": 9,
+      "snippet": "sk_l************************************56",
+      "confidence": "high",
+      "remediation": "Roll the API key in Stripe Dashboard immediately."
+    },
+    {
+      "type": "Stripe API Key",
+      "file": ".env",
+      "line": 10,
+      "snippet": "sk_l****************************yz",
+      "confidence": "high",
+      "remediation": "Roll the API key in Stripe Dashboard immediately."
+    },
+    {
+      "type": "GitHub Token",
+      "file": ".env",
+      "line": 16,
+      "snippet": "ghp_**********************************yz",
+      "confidence": "high",
+      "remediation": "Revoke token at github.com/settings/tokens and regenerate."
+    },
+    {
+      "type": "Generic API Key",
+      "file": ".env",
+      "line": 9,
+      "snippet": "API_********************************************56",
+      "confidence": "medium",
+      "remediation": "Verify if this is a real API key. If so, rotate it with your provider."
+    },
+    {
+      "type": "Generic Secret",
+      "file": ".env",
+      "line": 30,
+      "snippet": "PASS****************************45",
+      "confidence": "medium",
+      "remediation": "Verify if this is a real secret. If so, rotate it immediately."
+    },
+    {
+      "type": "Base64 High Entropy String",
+      "file": ".env",
+      "line": 12,
+      "snippet": "=wJa************************************Y\r",
+      "confidence": "low",
+      "remediation": "Review this string - it may be encoded credentials or a token."
+    },
+    {
+      "type": "Base64 High Entropy String",
+      "file": ".env",
+      "line": 17,
+      "snippet": ".com*************************************************X\r",
+      "confidence": "low",
+      "remediation": "Review this string - it may be encoded credentials or a token."
+    },
+    {
+      "type": "Database Connection String",
+      "file": ".env",
+      "line": 4,
+      "snippet": "post*****************************************pp",
+      "confidence": "high",
+      "remediation": "Move connection string to environment variables. Rotate credentials if exposed."
+    },
+    {
+      "type": "Generic API Key",
+      "file": ".env.example",
+      "line": 9,
+      "snippet": "API_**********************re",
+      "confidence": "medium",
+      "remediation": "Verify if this is a real API key. If so, rotate it with your provider."
+    },
+    {
+      "type": "Generic API Key",
+      "file": ".env.example",
+      "line": 15,
+      "snippet": "API_**********************re",
+      "confidence": "medium",
+      "remediation": "Verify if this is a real API key. If so, rotate it with your provider."
+    },
+    {
+      "type": "Generic Secret",
+      "file": ".env.example",
+      "line": 30,
+      "snippet": "PASS***********rd",
+      "confidence": "medium",
+      "remediation": "Verify if this is a real secret. If so, rotate it immediately."
+    }
+  ],
+  "envFiles": [
+    {
+      "path": ".env",
+      "absolutePath": "E:/Projects/envgaurd/examples/.env",
+      "isCommitted": false,
+      "keysFound": 0,
+      "keys": [],
+      "severity": "low",
+      "issue": "Not committed (OK)"
+    },
+    {
+      "path": ".env.example",
+      "absolutePath": "E:/Projects/envgaurd/examples/.env.example",
+      "isCommitted": false,
+      "keysFound": 19,
+      "keys": [
+        "DATABASE_URL",
+        "DATABASE_POOL_SIZE",
+        "DATABASE_SSL",
+        "API_KEY",
+        "STRIPE_SECRET_KEY",
+        "AWS_ACCESS_KEY_ID",
+        "AWS_SECRET_ACCESS_KEY",
+        "SENDGRID_API_KEY",
+        "GITHUB_TOKEN",
+        "SLACK_WEBHOOK_URL",
+        "NODE_ENV",
+        "PORT",
+        "HOST",
+        "LOG_LEVEL",
+        "EMAIL_FROM",
+        "EMAIL_HOST",
+        "EMAIL_PORT",
+        "EMAIL_USER",
+        "EMAIL_PASSWORD"
+      ],
+      "severity": "low",
+      "issue": "Not committed (OK)"
+    }
+  ],
+  "gitHistory": {
+    "checked": false,
+    "leaksFound": 0,
+    "findings": []
+  },
+  "recommendations": [
+    {
+      "priority": "CRITICAL",
+      "action": "Rotate 6 high-confidence secret(s) immediately",
+      "details": "High-confidence secrets detected in code. See remediation for each finding."
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Document environment variables",
+      "details": "Found 13 environment variables. Document them in README.md or .env.example"
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Review 5 medium-confidence finding(s)",
+      "details": "These may be false positives but should be verified"
+    },
+    {
+      "priority": "INFO",
+      "action": "Set up pre-commit hooks",
+      "details": "Use `npx envgaurd --check` in git pre-commit hook to prevent accidental commits"
+    }
+  ]
+}

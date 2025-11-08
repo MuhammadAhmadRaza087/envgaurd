@@ -1,28 +1,66 @@
 {
-  "name": "envgaurd",
-  "version": "1.0.0",
-  "description": "",
+  "name": "envinspect",
+  "version": "0.1.1",
+  "description": "EnvInspect — scan repos for environment variable issues & secrets, generate .env.example and CI checks",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "envinspect": "bin/envgaurd.js",
+    "envgaurd": "bin/envgaurd.js"
   },
-  "keywords": [],
+  "scripts": {
+    "test": "ava",
+    "lint": "eslint .",
+    "start": "node bin/envgaurd.js",
+    "coverage": "c8 ava",
+    "prepare": "husky",
+    "prepublishOnly": "npm test && npm run lint"
+  },
+  "keywords": [
+    "env",
+    "secrets",
+    "security",
+    "env-vars",
+    "ci",
+    "postman",
+    "dotenv",
+    "environment-variables"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "files": [
+    "bin",
+    "lib",
+    "index.js",
+    "docs",
+    "examples"
+  ],
   "dependencies": {
     "@octokit/rest": "^22.0.1",
+    "commander": "^12.0.0",
     "crypto-js": "^4.2.0",
+    "dotenv": "^16.3.1",
+    "fast-glob": "^3.3.2",
+    "js-yaml": "^4.1.0",
     "postman-collection": "^5.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "ava": "^6.0.1",
+    "c8": "^9.0.0",
     "eslint": "^9.39.1",
-    "globals": "^16.5.0"
+    "globals": "^16.5.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0"
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
+  },
+  "ava": {
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "timeout": "2m"
   }
 }
